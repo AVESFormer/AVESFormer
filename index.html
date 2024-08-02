@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AVESFormer: Efficient Transformer Design for Real-Time Audio-Visual Segmentation.">
+  <meta name="keywords" content="AVESFormer, real-rime AVS,AVS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AVESFormer: Efficient Transformer Design for Real-Time Audio-Visual Segmentation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <!-- 加载字体样式 -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <!-- 现代化的CSS框架 -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <!-- 一个图标库 -->
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--  <link rel="icon" href="./static/images/logo.png">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- 图片的轮播组件 -->
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <!-- 图片的滑动组件 -->
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <!-- 特定的脚本 -->
+  <script src="./static/js/index.js"></script>
+</head>
+<!-- 上述表示head的结束 -->
+<!-- 页面的可见内容在body中 -->
+<body>
+
+<!-- 导航栏开始 -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <!-- 导航栏品牌标志区域开始 -->
+  <div class="navbar-brand">
+    <!-- 导航栏汉堡式菜单按钮，主要用于移动设备 -->
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <!-- 汉堡式菜单按钮的三条线，对屏幕阅读器隐藏 -->
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- 导航栏品牌标志区域结束 -->
+
+  <!-- 导航菜单开始 -->
+  <div class="navbar-menu">
+    <!-- 导航条开始区域，设置样式以使内容居中 -->
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+      <!-- 带有下拉菜单的导航项，鼠标悬停时展开 -->
+      <!-- <div class="navbar-item has-dropdown is-hoverable"> -->
+        <!-- 下拉菜单的触发链接 -->
+        <!-- <a class="navbar-link"> -->
+          <!-- More Research -->
+        <!-- </a> -->
+        <!-- 下拉菜单内容开始 -->
+        <!-- <div class="navbar-dropdown"> -->
+          <!-- 下拉菜单的各个导航项，链接到各个研究项目的网站 -->
+          <!-- <a class="navbar-item" href="https://hypernerf.github.io">HyperNeRF</a> -->
+          <!-- <a class="navbar-item" href="https://nerfies.github.io">Nerfies</a> -->
+          <!-- <a class="navbar-item" href="https://latentfusion.github.io">LatentFusion</a> -->
+          <!-- <a class="navbar-item" href="https://photoshape.github.io">PhotoShape</a> -->
+        <!-- </div> -->
+        <!-- 下拉菜单内容结束 -->
+      </div>
+    </div>
+    <!-- 导航条开始区域结束 -->
+  </div>
+  <!-- 导航菜单结束 -->
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div style="display: flex; align-items: flex-start;">
+            <h1 class="title is-1 publication-title">AVESFormer: Efficient Transformer Design for Real-Time Audio-Visual Segmentation</h1>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="audio_video"
+      controls
+      preload
+      playsinline
+      poster="./static/images/Audio_black_01.png"
+      height="100%">
+        <source src="./static/videos/Audio_black.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recently, transformer-based models have demonstrated remarkable performance on audio-visual segmentation (AVS) tasks. However, their expensive computational cost makes real-time inference impractical. By characterizing attention maps of the network, we identify two key obstacles in AVS models: 1) attention dissipation, corresponding to the over-concentrated attention weights by Softmax within restricted frames, and 2) inefficient, burdensome transformer decoder, caused by narrow focus patterns in early stages. In this paper, we introduce AVESFormer, the first real-time Audio-Visual Efficient Segmentation transformer that achieves fast, efficient and light-weight simultaneously. Our model leverages an efficient prompt query generator to correct the behaviour of cross-attention. Additionally, we propose ELF decoder to bring greater efficiency by facilitating convolutions suitable for local features to reduce computational burdens. Extensive experiments demonstrate that our AVESFormer significantly enhances model performance, achieving 79.9% on S4, 57.9% on MS3 and 31.2% on AVSS, outperforming previous state-of-the-art and achieving an excellent trade-off between performance and speed. Code is available in supplementary material.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+            This website is built from <a
+              href="https://github.com/nerfies/nerfies.github.io">nefries</a>.
+              <p>
+              It is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+Commons Attribution-ShareAlike 4.0 International License</a>.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
