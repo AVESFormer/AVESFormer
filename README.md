@@ -1,6 +1,6 @@
 # Nerfies
 
-This is the repository that contains source code for the [AVESFormer website](https://AVESFormer.github.io/AVESFormer/).  
+This is the repository that contains source code for the [AVESFormer website](https://avesformer.github.io/AVESFormer/).  
 It contains the video demostration on AVSBench dataset and two real world scenarios.
 
 # Website License
